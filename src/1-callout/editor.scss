@@ -5,3 +5,27 @@
  */
 
 @import "../../../../themes/studio-val/sass/abstracts/colors";
+@import "../../../../themes/studio-val/sass/abstracts/borders";
+
+.st-button {
+	border-radius: 8px;
+	width: fit-content;
+
+	a {
+		display: flex;
+		padding: 10px 18px;
+		font-family: "Poppins";
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 15px;
+		position: relative;
+	}
+
+	&.dark {
+		background: $color__dark;
+
+		a {
+			color: $color__white;
+		}
+	}
+}

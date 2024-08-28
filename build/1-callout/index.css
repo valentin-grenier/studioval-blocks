@@ -6,5 +6,25 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.st-button {
+  border-radius: 8px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.st-button a {
+  display: flex;
+  padding: 10px 18px;
+  font-family: "Poppins";
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+}
+.st-button.dark {
+  background: #232a43;
+}
+.st-button.dark a {
+  color: #ffffff;
+}
 
 /*# sourceMappingURL=index.css.map*/

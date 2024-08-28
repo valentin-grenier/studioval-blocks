@@ -115,7 +115,7 @@ export default function Edit(props) {
 
 					{hasButton && (
 						<div className="st-button dark">
-							<a href="/contact">Demandez un devis gratuit</a>
+							<a href="#">Demandez un devis gratuit</a>
 						</div>
 					)}
 				</div>

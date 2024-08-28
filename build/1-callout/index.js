@@ -252,7 +252,7 @@ function Edit(props) {
   }), hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "st-button dark"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "/contact"
+    href: "#"
   }, "Demandez un devis gratuit")))));
 }
 
