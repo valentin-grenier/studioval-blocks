@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "studioval-blocks/callout",
+	"version": "0.1.0",
+	"title": "Callout",
+	"category": "text",
+	"icon": "smiley",
+	"description": "A callout block to highlight important information.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-studioval-callout__title"
+		},
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-studioval-callout__content"
+		},
+		"type": {
+			"type": "string",
+			"default": "positive-message"
+		},
+		"image": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src",
+			"default": "https://placehold.co/40x40"
+		}
+	},
+	"textdomain": "studioval-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

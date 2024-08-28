@@ -1,0 +1,62 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@import "../../../../themes/studio-val/sass/abstracts/colors";
+
+.wp-block-studioval-blocks-callout {
+	margin-bottom: 1.5rem;
+	padding: 1.5rem;
+	border-radius: 16px;
+	display: flex;
+	gap: 1.5rem;
+	width: fit-content;
+
+	.wp-block-studioval-callout__title {
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
+
+	&__image {
+		width: 3rem;
+		height: 3rem;
+	}
+
+	// == Block colors
+	&.is-informative-message {
+		background: $color__orange-light;
+
+		.wp-block-studioval-callout__title {
+			color: $color__orange;
+		}
+	}
+
+	&.is-positive-message {
+		background: $color__green-light;
+
+		.wp-block-studioval-callout__title {
+			color: $color__green;
+		}
+	}
+
+	&.is-danger-message {
+		background: $color__red-light;
+
+		.wp-block-studioval-callout__title {
+			color: $color__red;
+		}
+	}
+
+	p {
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
