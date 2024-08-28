@@ -62,6 +62,36 @@ const check = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx
 
 /***/ }),
 
+/***/ "./node_modules/@wordpress/icons/build-module/library/currency-euro.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/currency-euro.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/**
+ * WordPress dependencies
+ */
+
+
+const currencyEuro = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24",
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.Path, {
+    d: "M12 3.25a8.75 8.75 0 100 17.5 8.75 8.75 0 000-17.5zM4.75 12a7.25 7.25 0 1114.5 0 7.25 7.25 0 01-14.5 0zm9.195 1.944a2.75 2.75 0 01-4.066-.194h.621a.75.75 0 000-1.5H9.262a2.767 2.767 0 010-.5H11.5a.75.75 0 000-1.5H9.88a2.75 2.75 0 014.066-.194.75.75 0 001.06-1.061 4.25 4.25 0 00-6.88 1.255H7.5a.75.75 0 000 1.5h.258c-.01.166-.01.334 0 .5H7.5a.75.75 0 000 1.5h.626a4.25 4.25 0 006.88 1.255.75.75 0 00-1.06-1.06z"
+  })
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (currencyEuro);
+//# sourceMappingURL=currency-euro.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@wordpress/icons/build-module/library/warning.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/library/warning.js ***!
@@ -113,6 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/check.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/warning.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/cancel-circle-filled.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/currency-euro.js");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/1-callout/editor.scss");
 /* harmony import */ var _assets_light_bubble_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/light-bubble.png */ "./assets/light-bubble.png");
 /* harmony import */ var _assets_warning_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../assets/warning.png */ "./assets/warning.png");
@@ -131,7 +162,8 @@ function Edit(props) {
     title,
     content,
     type,
-    image
+    image,
+    hasButton
   } = props.attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: ` is-${type}`
@@ -167,7 +199,15 @@ function Edit(props) {
         });
         break;
     }
-    console.log(image);
+    if (type !== "promotion-message") {
+      props.setAttributes({
+        hasButton: false
+      });
+    } else {
+      props.setAttributes({
+        hasButton: true
+      });
+    }
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
@@ -184,9 +224,14 @@ function Edit(props) {
     label: "Danger message",
     onClick: () => onChangeType("danger-message"),
     isPressed: type == "danger-message"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_11__["default"],
+    label: "Promotion",
+    onClick: () => onChangeType("promotion-message"),
+    isPressed: type == "promotion-message"
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, !hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-studioval-blocks-callout__image"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: image,
@@ -204,7 +249,11 @@ function Edit(props) {
     value: content,
     onChange: onChangeContent,
     className: `wp-block-studioval-callout__content`
-  }))));
+  }), hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "st-button dark"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "/contact"
+  }, "Demandez un devis gratuit")))));
 }
 
 /***/ }),
@@ -256,7 +305,8 @@ function save(props) {
     title,
     content,
     type,
-    image
+    image,
+    hasButton
   } = props.attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
 
@@ -264,7 +314,7 @@ function save(props) {
   blockProps.className += ` is-${type}`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, !hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-studioval-blocks-callout__image"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: image,
@@ -277,7 +327,11 @@ function save(props) {
     tagName: "p",
     className: "wp-block-studioval-callout__content",
     value: content
-  })));
+  }), hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "st-button dark"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "/contact"
+  }, "Demandez un devis gratuit"))));
 }
 
 /***/ }),
@@ -1760,7 +1814,7 @@ module.exports = window["wp"]["primitives"];
   \**********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"studioval-blocks/callout","version":"0.1.0","title":"Callout","category":"text","icon":"smiley","description":"A callout block to highlight important information.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":".wp-block-studioval-callout__title"},"content":{"type":"string","source":"html","selector":".wp-block-studioval-callout__content"},"type":{"type":"string","default":"positive-message"},"image":{"type":"string","source":"attribute","selector":"img","attribute":"src","default":"https://placehold.co/40x40"}},"textdomain":"studioval-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"studioval-blocks/callout","version":"0.1.0","title":"Callout","category":"text","icon":"smiley","description":"A callout block to highlight important information.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":".wp-block-studioval-callout__title"},"content":{"type":"string","source":"html","selector":".wp-block-studioval-callout__content"},"type":{"type":"string","default":"positive-message"},"image":{"type":"string","source":"attribute","selector":"img","attribute":"src","default":"https://placehold.co/40x40"},"hasButton":{"type":"boolean","default":false}},"textdomain":"studioval-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

@@ -7,7 +7,12 @@ import {
 
 import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
 
-import { check, warning, cancelCircleFilled } from "@wordpress/icons";
+import {
+	check,
+	warning,
+	cancelCircleFilled,
+	currencyEuro,
+} from "@wordpress/icons";
 
 import "./editor.scss";
 
@@ -16,7 +21,7 @@ import warningImage from "../../assets/warning.png";
 import alertImage from "../../assets/alert.png";
 
 export default function Edit(props) {
-	const { title, content, type, image } = props.attributes;
+	const { title, content, type, image, hasButton } = props.attributes;
 
 	const blockProps = useBlockProps({
 		className: ` is-${type}`,
@@ -45,7 +50,11 @@ export default function Edit(props) {
 				break;
 		}
 
-		console.log(image);
+		if (type !== "promotion-message") {
+			props.setAttributes({ hasButton: false });
+		} else {
+			props.setAttributes({ hasButton: true });
+		}
 	};
 
 	return (
@@ -70,13 +79,21 @@ export default function Edit(props) {
 						onClick={() => onChangeType("danger-message")}
 						isPressed={type == "danger-message"}
 					/>
+					<ToolbarButton
+						icon={currencyEuro}
+						label="Promotion"
+						onClick={() => onChangeType("promotion-message")}
+						isPressed={type == "promotion-message"}
+					/>
 				</ToolbarGroup>
 			</BlockControls>
 
 			<div {...blockProps}>
-				<div className="wp-block-studioval-blocks-callout__image">
-					<img src={image} alt={`icon-${type}`} />
-				</div>
+				{!hasButton && (
+					<div className="wp-block-studioval-blocks-callout__image">
+						<img src={image} alt={`icon-${type}`} />
+					</div>
+				)}
 
 				<div>
 					<RichText
@@ -95,6 +112,12 @@ export default function Edit(props) {
 						onChange={onChangeContent}
 						className={`wp-block-studioval-callout__content`}
 					/>
+
+					{hasButton && (
+						<div className="st-button dark">
+							<a href="/contact">Demandez un devis gratuit</a>
+						</div>
+					)}
 				</div>
 			</div>
 		</>

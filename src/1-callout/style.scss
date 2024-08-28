@@ -50,6 +50,22 @@
 		}
 	}
 
+	&.is-promotion-message {
+		background: $color__light;
+
+		.wp-block-studioval-callout__title {
+			color: $color__primary;
+		}
+
+		.st-button.dark {
+			margin-top: 1rem;
+
+			a {
+				font-size: 14px;
+			}
+		}
+	}
+
 	p {
 		&:first-of-type {
 			margin-top: 0;

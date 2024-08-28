@@ -32,6 +32,10 @@
 			"selector": "img",
 			"attribute": "src",
 			"default": "https://placehold.co/40x40"
+		},
+		"hasButton": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"textdomain": "studioval-blocks",

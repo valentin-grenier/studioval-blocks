@@ -42,6 +42,18 @@
 .wp-block-studioval-blocks-callout.is-danger-message .wp-block-studioval-callout__title {
   color: #bf211e;
 }
+.wp-block-studioval-blocks-callout.is-promotion-message {
+  background: #f4f4f9;
+}
+.wp-block-studioval-blocks-callout.is-promotion-message .wp-block-studioval-callout__title {
+  color: #4d65c7;
+}
+.wp-block-studioval-blocks-callout.is-promotion-message .st-button.dark {
+  margin-top: 1rem;
+}
+.wp-block-studioval-blocks-callout.is-promotion-message .st-button.dark a {
+  font-size: 14px;
+}
 .wp-block-studioval-blocks-callout p:first-of-type {
   margin-top: 0;
 }

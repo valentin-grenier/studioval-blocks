@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save(props) {
-	const { title, content, type, image } = props.attributes;
+	const { title, content, type, image, hasButton } = props.attributes;
 
 	const blockProps = useBlockProps.save();
 
@@ -10,9 +10,11 @@ export default function save(props) {
 
 	return (
 		<div {...blockProps}>
-			<div className="wp-block-studioval-blocks-callout__image">
-				<img src={image} alt={`icon-${type}`} />
-			</div>
+			{!hasButton && (
+				<div className="wp-block-studioval-blocks-callout__image">
+					<img src={image} alt={`icon-${type}`} />
+				</div>
+			)}
 
 			<div>
 				<RichText.Content
@@ -25,6 +27,11 @@ export default function save(props) {
 					className="wp-block-studioval-callout__content"
 					value={content}
 				/>
+				{hasButton && (
+					<div className="st-button dark">
+						<a href="/contact">Demandez un devis gratuit</a>
+					</div>
+				)}
 			</div>
 		</div>
 	);
