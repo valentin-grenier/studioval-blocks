@@ -1,7 +1,7 @@
-import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 
 export default function save(props) {
-	const { title, content, type, hasButton } = props.attributes;
+	const { type } = props.attributes;
 
 	const blockProps = useBlockProps.save();
 
@@ -10,23 +10,7 @@ export default function save(props) {
 
 	return (
 		<div {...blockProps}>
-			<div>
-				<RichText.Content
-					tagName="p"
-					className="wp-block-studioval-callout__title"
-					value={title}
-				/>
-				<RichText.Content
-					tagName="p"
-					className="wp-block-studioval-callout__content"
-					value={content}
-				/>
-				{hasButton && (
-					<div className="st-button dark">
-						<a href="/contact">Demandez un devis gratuit</a>
-					</div>
-				)}
-			</div>
+			<InnerBlocks.Content />
 		</div>
 	);
 }

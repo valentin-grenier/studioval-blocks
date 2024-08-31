@@ -11,37 +11,31 @@
   margin-bottom: 1.5rem;
   padding: 1.5rem;
   border-radius: 16px;
-  display: flex;
-  gap: 1.5rem;
   width: -moz-fit-content;
   width: fit-content;
-}
-.wp-block-studioval-blocks-callout .wp-block-studioval-callout__title {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
 }
 .wp-block-studioval-blocks-callout.is-informative-message {
   background: #fbf4e9;
 }
-.wp-block-studioval-blocks-callout.is-informative-message .wp-block-studioval-callout__title {
+.wp-block-studioval-blocks-callout.is-informative-message .title {
   color: #d68e22;
 }
 .wp-block-studioval-blocks-callout.is-positive-message {
   background: #e4f1f2;
 }
-.wp-block-studioval-blocks-callout.is-positive-message .wp-block-studioval-callout__title {
+.wp-block-studioval-blocks-callout.is-positive-message .title {
   color: #00c49a;
 }
 .wp-block-studioval-blocks-callout.is-danger-message {
   background: #f6dedd;
 }
-.wp-block-studioval-blocks-callout.is-danger-message .wp-block-studioval-callout__title {
+.wp-block-studioval-blocks-callout.is-danger-message .title {
   color: #bf211e;
 }
 .wp-block-studioval-blocks-callout.is-promotion-message {
   background: #f4f4f9;
 }
-.wp-block-studioval-blocks-callout.is-promotion-message .wp-block-studioval-callout__title {
+.wp-block-studioval-blocks-callout.is-promotion-message .title {
   color: #4d65c7;
 }
 .wp-block-studioval-blocks-callout.is-promotion-message .st-button.dark {
@@ -50,21 +44,17 @@
 .wp-block-studioval-blocks-callout.is-promotion-message .st-button.dark a {
   font-size: 14px;
 }
-.wp-block-studioval-blocks-callout p:first-of-type {
-  margin-top: 0;
+.wp-block-studioval-blocks-callout .title {
+  font-weight: 700;
+  margin: 0 0 0.5rem;
 }
-.wp-block-studioval-blocks-callout p:last-of-type {
+.wp-block-studioval-blocks-callout .content {
   margin-bottom: 0;
 }
-@media screen and (max-width: 768px) {
-  .wp-block-studioval-blocks-callout {
-    flex-direction: column;
-    align-items: center;
-  }
-  .wp-block-studioval-blocks-callout p {
-    text-align: center;
-  }
-  .wp-block-studioval-blocks-callout .st-button.dark {
-    margin: 1rem auto 0;
-  }
+.wp-block-studioval-blocks-callout .wp-block-button__link {
+  background: #232a43 !important;
+  border-radius: 12px !important;
+  padding: 10px 18px !important;
+  font-size: 14px !important;
+  margin-top: 1rem !important;
 }

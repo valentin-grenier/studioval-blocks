@@ -29,6 +29,17 @@
     "hasButton": {
       "type": "boolean",
       "default": false
+    },
+    "buttonText": {
+      "type": "string",
+      "source": "html",
+      "selector": ".wp-block-studioval-callout__button"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".wp-block-studioval-callout__button",
+      "attribute": "href"
     }
   },
   "textdomain": "studioval-blocks",

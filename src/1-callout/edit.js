@@ -1,8 +1,8 @@
 import { __ } from "@wordpress/i18n";
 import {
 	useBlockProps,
-	RichText,
 	BlockControls,
+	InnerBlocks,
 } from "@wordpress/block-editor";
 
 import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
@@ -17,34 +17,14 @@ import {
 import "./editor.scss";
 
 export default function Edit(props) {
-	const { title, content, type, hasButton } = props.attributes;
+	const { type, hasButton } = props.attributes;
 
 	const blockProps = useBlockProps({
 		className: ` is-${type}`,
 	});
 
-	const onChangeTitle = (event) => {
-		props.setAttributes({ title: event });
-	};
-
-	const onChangeContent = (event) => {
-		props.setAttributes({ content: event });
-	};
-
 	const onChangeType = (type) => {
 		props.setAttributes({ type: type });
-
-		switch (type) {
-			case "positive-message":
-				props.setAttributes({ image: lightBubbleImage });
-				break;
-			case "informative-message":
-				props.setAttributes({ image: warningImage });
-				break;
-			case "danger-message":
-				props.setAttributes({ image: alertImage });
-				break;
-		}
 
 		if (type !== "promotion-message") {
 			props.setAttributes({ hasButton: false });
@@ -52,6 +32,32 @@ export default function Edit(props) {
 			props.setAttributes({ hasButton: true });
 		}
 	};
+
+	let BASE_TEMPLATE = [
+		[
+			"core/paragraph",
+			{
+				placeholder: __("Add your title…", "studio-val"),
+				className: "title",
+			},
+		],
+		[
+			"core/paragraph",
+			{
+				placeholder: __("Add your message…", "studio-val"),
+				className: "content",
+			},
+		],
+	];
+
+	hasButton &&
+		+BASE_TEMPLATE.push([
+			"core/button",
+			{
+				placeholder: __("Call to action", "studio-val"),
+				className: "st-button",
+			},
+		]);
 
 	return (
 		<>
@@ -84,30 +90,12 @@ export default function Edit(props) {
 				</ToolbarGroup>
 			</BlockControls>
 
-			<div {...blockProps}>
-				<div>
-					<RichText
-						tagName="p"
-						placeholder={__("Write your title here...", "studioval-blocks")}
-						value={title}
-						onChange={onChangeTitle}
-						className={`wp-block-studioval-callout__title`}
-						multiline={false}
+			<div className="wp-block__callout">
+				<div {...blockProps}>
+					<InnerBlocks
+						template={BASE_TEMPLATE}
+						templateLock="all" // disable adding new blocks
 					/>
-
-					<RichText
-						tagName="p"
-						placeholder={__("Write some text here...", "studioval-blocks")}
-						value={content}
-						onChange={onChangeContent}
-						className={`wp-block-studioval-callout__content`}
-					/>
-
-					{hasButton && (
-						<div className="st-button dark">
-							<a href="#">Demandez un devis gratuit</a>
-						</div>
-					)}
 				</div>
 			</div>
 		</>

@@ -6,26 +6,20 @@
  */
 
 @import "../../../../themes/studio-val/sass/abstracts/colors";
+@import "../../../../themes/studio-val/sass/abstracts/borders";
 @import "../../../../themes/studio-val/sass/abstracts/media-queries";
 
 .wp-block-studioval-blocks-callout {
 	margin-bottom: 1.5rem;
 	padding: 1.5rem;
 	border-radius: 16px;
-	display: flex;
-	gap: 1.5rem;
 	width: fit-content;
-
-	.wp-block-studioval-callout__title {
-		font-weight: 700;
-		margin-bottom: 0.5rem;
-	}
 
 	// == Block colors
 	&.is-informative-message {
 		background: $color__orange-light;
 
-		.wp-block-studioval-callout__title {
+		.title {
 			color: $color__orange;
 		}
 	}
@@ -33,7 +27,7 @@
 	&.is-positive-message {
 		background: $color__green-light;
 
-		.wp-block-studioval-callout__title {
+		.title {
 			color: $color__green;
 		}
 	}
@@ -41,7 +35,7 @@
 	&.is-danger-message {
 		background: $color__red-light;
 
-		.wp-block-studioval-callout__title {
+		.title {
 			color: $color__red;
 		}
 	}
@@ -49,7 +43,7 @@
 	&.is-promotion-message {
 		background: $color__light;
 
-		.wp-block-studioval-callout__title {
+		.title {
 			color: $color__primary;
 		}
 
@@ -62,26 +56,23 @@
 		}
 	}
 
-	p {
-		&:first-of-type {
-			margin-top: 0;
-		}
-
-		&:last-of-type {
-			margin-bottom: 0;
-		}
+	// == Title
+	.title {
+		font-weight: 700;
+		margin: 0 0 0.5rem;
 	}
 
-	@media screen and (max-width: $breakpoint__md) {
-		flex-direction: column;
-		align-items: center;
+	// == Content
+	.content {
+		margin-bottom: 0;
+	}
 
-		p {
-			text-align: center;
-		}
-
-		.st-button.dark {
-			margin: 1rem auto 0;
-		}
+	// == Button
+	.wp-block-button__link {
+		background: $color__dark !important;
+		border-radius: $radius__sm !important;
+		padding: 10px 18px !important;
+		font-size: 14px !important;
+		margin-top: 1rem !important;
 	}
 }

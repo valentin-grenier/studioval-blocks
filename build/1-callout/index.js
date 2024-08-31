@@ -153,45 +153,16 @@ __webpack_require__.r(__webpack_exports__);
 
 function Edit(props) {
   const {
-    title,
-    content,
     type,
     hasButton
   } = props.attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: ` is-${type}`
   });
-  const onChangeTitle = event => {
-    props.setAttributes({
-      title: event
-    });
-  };
-  const onChangeContent = event => {
-    props.setAttributes({
-      content: event
-    });
-  };
   const onChangeType = type => {
     props.setAttributes({
       type: type
     });
-    switch (type) {
-      case "positive-message":
-        props.setAttributes({
-          image: lightBubbleImage
-        });
-        break;
-      case "informative-message":
-        props.setAttributes({
-          image: warningImage
-        });
-        break;
-      case "danger-message":
-        props.setAttributes({
-          image: alertImage
-        });
-        break;
-    }
     if (type !== "promotion-message") {
       props.setAttributes({
         hasButton: false
@@ -202,6 +173,17 @@ function Edit(props) {
       });
     }
   };
+  let BASE_TEMPLATE = [["core/paragraph", {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add your title…", "studio-val"),
+    className: "title"
+  }], ["core/paragraph", {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add your message…", "studio-val"),
+    className: "content"
+  }]];
+  hasButton && +BASE_TEMPLATE.push(["core/button", {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Call to action", "studio-val"),
+    className: "st-button"
+  }]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
     label: "Positive message",
@@ -223,25 +205,13 @@ function Edit(props) {
     onClick: () => onChangeType("promotion-message"),
     isPressed: type == "promotion-message"
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wp-block__callout"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "p",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write your title here...", "studioval-blocks"),
-    value: title,
-    onChange: onChangeTitle,
-    className: `wp-block-studioval-callout__title`,
-    multiline: false
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "p",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write some text here...", "studioval-blocks"),
-    value: content,
-    onChange: onChangeContent,
-    className: `wp-block-studioval-callout__content`
-  }), hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "st-button dark"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "#"
-  }, "Demandez un devis gratuit")))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
+    template: BASE_TEMPLATE,
+    templateLock: "all" // disable adding new blocks
+  }))));
 }
 
 /***/ }),
@@ -290,10 +260,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function save(props) {
   const {
-    title,
-    content,
-    type,
-    hasButton
+    type
   } = props.attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
 
@@ -301,19 +268,7 @@ function save(props) {
   blockProps.className += ` is-${type}`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "p",
-    className: "wp-block-studioval-callout__title",
-    value: title
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "p",
-    className: "wp-block-studioval-callout__content",
-    value: content
-  }), hasButton && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "st-button dark"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "/contact"
-  }, "Demandez un devis gratuit"))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null));
 }
 
 /***/ }),
@@ -1766,7 +1721,7 @@ module.exports = window["wp"]["primitives"];
   \**********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"studioval-blocks/callout","version":"0.1.0","title":"Callout","category":"text","icon":"smiley","description":"A callout block to highlight important information.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":".wp-block-studioval-callout__title"},"content":{"type":"string","source":"html","selector":".wp-block-studioval-callout__content"},"type":{"type":"string","default":"positive-message"},"hasButton":{"type":"boolean","default":false}},"textdomain":"studioval-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"studioval-blocks/callout","version":"0.1.0","title":"Callout","category":"text","icon":"smiley","description":"A callout block to highlight important information.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":".wp-block-studioval-callout__title"},"content":{"type":"string","source":"html","selector":".wp-block-studioval-callout__content"},"type":{"type":"string","default":"positive-message"},"hasButton":{"type":"boolean","default":false},"buttonText":{"type":"string","source":"html","selector":".wp-block-studioval-callout__button"},"buttonUrl":{"type":"string","source":"attribute","selector":".wp-block-studioval-callout__button","attribute":"href"}},"textdomain":"studioval-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
