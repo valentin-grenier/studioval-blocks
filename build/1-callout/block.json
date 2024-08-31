@@ -26,13 +26,6 @@
       "type": "string",
       "default": "positive-message"
     },
-    "image": {
-      "type": "string",
-      "source": "attribute",
-      "selector": "img",
-      "attribute": "src",
-      "default": "https://placehold.co/40x40"
-    },
     "hasButton": {
       "type": "boolean",
       "default": false

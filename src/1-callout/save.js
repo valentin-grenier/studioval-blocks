@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save(props) {
-	const { title, content, type, image, hasButton } = props.attributes;
+	const { title, content, type, hasButton } = props.attributes;
 
 	const blockProps = useBlockProps.save();
 
@@ -10,12 +10,6 @@ export default function save(props) {
 
 	return (
 		<div {...blockProps}>
-			{!hasButton && (
-				<div className="wp-block-studioval-blocks-callout__image">
-					<img src={image} alt={`icon-${type}`} />
-				</div>
-			)}
-
 			<div>
 				<RichText.Content
 					tagName="p"

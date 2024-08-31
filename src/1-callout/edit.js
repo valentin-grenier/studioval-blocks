@@ -16,12 +16,8 @@ import {
 
 import "./editor.scss";
 
-import lightBubbleImage from "../../assets/light-bubble.png";
-import warningImage from "../../assets/warning.png";
-import alertImage from "../../assets/alert.png";
-
 export default function Edit(props) {
-	const { title, content, type, image, hasButton } = props.attributes;
+	const { title, content, type, hasButton } = props.attributes;
 
 	const blockProps = useBlockProps({
 		className: ` is-${type}`,
@@ -89,12 +85,6 @@ export default function Edit(props) {
 			</BlockControls>
 
 			<div {...blockProps}>
-				{!hasButton && (
-					<div className="wp-block-studioval-blocks-callout__image">
-						<img src={image} alt={`icon-${type}`} />
-					</div>
-				)}
-
 				<div>
 					<RichText
 						tagName="p"
