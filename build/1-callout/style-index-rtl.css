@@ -1,6 +1,7 @@
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/1-callout/style.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
 /**
  * The following styles get applied both on the front of your site
  * and in the editor.
@@ -14,6 +15,9 @@
   width: -moz-fit-content;
   width: fit-content;
 }
+.wp-block-studioval-blocks-callout strong {
+  color: #232a43;
+}
 .wp-block-studioval-blocks-callout.is-informative-message {
   background: #fbf4e9;
 }
@@ -26,11 +30,27 @@
 .wp-block-studioval-blocks-callout.is-positive-message .title {
   color: #00c49a;
 }
+.wp-block-studioval-blocks-callout.is-positive-message .wp-block-list {
+  list-style: none;
+  padding-right: 0;
+}
+.wp-block-studioval-blocks-callout.is-positive-message .wp-block-list li::before {
+  content: "✅";
+  margin-left: 0.5rem;
+}
 .wp-block-studioval-blocks-callout.is-danger-message {
   background: #f6dedd;
 }
 .wp-block-studioval-blocks-callout.is-danger-message .title {
   color: #bf211e;
+}
+.wp-block-studioval-blocks-callout.is-danger-message .wp-block-list {
+  list-style: none;
+  padding-right: 0;
+}
+.wp-block-studioval-blocks-callout.is-danger-message .wp-block-list li::before {
+  content: "❌";
+  margin-left: 0.5rem;
 }
 .wp-block-studioval-blocks-callout.is-promotion-message {
   background: #f4f4f9;
@@ -56,5 +76,12 @@
   border-radius: 12px !important;
   padding: 10px 18px !important;
   font-size: 14px !important;
+  font-weight: 600 !important;
   margin-top: 1rem !important;
+}
+.wp-block-studioval-blocks-callout .wp-block-list {
+  margin-bottom: 0 !important;
+}
+.wp-block-studioval-blocks-callout .wp-block-list li:last-child {
+  margin-bottom: 0 !important;
 }

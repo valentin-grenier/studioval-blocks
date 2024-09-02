@@ -163,6 +163,7 @@ function Edit(props) {
     props.setAttributes({
       type: type
     });
+    console.log(type);
     if (type !== "promotion-message") {
       props.setAttributes({
         hasButton: false
@@ -180,7 +181,7 @@ function Edit(props) {
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add your message…", "studio-val"),
     className: "content"
   }]];
-  hasButton && +BASE_TEMPLATE.push(["core/button", {
+  hasButton && BASE_TEMPLATE.push(["core/button", {
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Call to action", "studio-val"),
     className: "st-button"
   }]);
@@ -209,8 +210,7 @@ function Edit(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
-    template: BASE_TEMPLATE,
-    templateLock: "all" // disable adding new blocks
+    template: BASE_TEMPLATE
   }))));
 }
 

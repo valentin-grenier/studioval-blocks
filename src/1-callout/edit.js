@@ -26,6 +26,8 @@ export default function Edit(props) {
 	const onChangeType = (type) => {
 		props.setAttributes({ type: type });
 
+		console.log(type);
+
 		if (type !== "promotion-message") {
 			props.setAttributes({ hasButton: false });
 		} else {
@@ -51,7 +53,7 @@ export default function Edit(props) {
 	];
 
 	hasButton &&
-		+BASE_TEMPLATE.push([
+		BASE_TEMPLATE.push([
 			"core/button",
 			{
 				placeholder: __("Call to action", "studio-val"),
@@ -92,10 +94,7 @@ export default function Edit(props) {
 
 			<div className="wp-block__callout">
 				<div {...blockProps}>
-					<InnerBlocks
-						template={BASE_TEMPLATE}
-						templateLock="all" // disable adding new blocks
-					/>
+					<InnerBlocks template={BASE_TEMPLATE} />
 				</div>
 			</div>
 		</>

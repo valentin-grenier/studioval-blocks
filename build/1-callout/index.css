@@ -29,5 +29,12 @@
   font-size: 15px !important;
   font-family: "Poppins", sans-serif;
 }
+.wp-block__callout .wp-block-list li:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
+.wp-block__callout .wp-block-list li:before {
+  float: left;
+  margin-right: 0.25rem;
+}
 
 /*# sourceMappingURL=index.css.map*/
